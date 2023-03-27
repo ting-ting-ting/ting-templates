@@ -1,0 +1,21 @@
+* {
+  font-family: Noto Sans TC, sans-serif;
+}
+
+html,
+body {
+  height: 100vh;
+  margin: unset;
+  overflow: hidden;
+  width: 100%;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+
+#root {
+  height: 100%;
+}
