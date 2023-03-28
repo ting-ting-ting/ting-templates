@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@core/*": ["apps/client/core/*"],
+      "@public/*": ["apps/client/public/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]
