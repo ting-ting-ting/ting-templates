@@ -6,25 +6,49 @@
 
 $override-colors: (
   light: (
-    // bg: #fff,
-    // primary: #f9f9f9,
-    // primary-light: #f9f9f9,
-    // on-primary: #858585,
-    // primary-dark: $primary-dark,
-    // primary-hover-bg: $primary-hover-bg,
-    // secondary: $secondary,
-    // secondary-light: $secondary-light,
-    // secondary-dark: $secondary-dark,
-    // success: $success,
-    // success-light: $success-light,
-    // success-dark: $success-dark,
-    // text-primary: $text-primary,
-    // text-secondary: $text-secondary,
-    // text-disabled: #dadada,
-    // action-active: $action-active,
-    // action-inactive: $action-inactive,
-    // action-disabled: $action-disabled,
-    // action-disabled-bg: $action-disabled-bg,
+    // bg: #f4f4f4,
+    // border: #d9d9d9,
+    // surface:  #fff,
+    // divider: #f2f2f2,
+
+    // primary: #26890D,
+    // primary-light: #63A951,
+    // primary-dark: #1D7706,
+    // primary-hover-bg:
+    // primary-active-bg:
+
+    // secondary: #53565A,
+    // secondary-light: #75787B,
+    // secondary-dark: #161616,
+    // secondary-hover-bg:
+    // secondary-active-bg:
+
+    // error: #DA291C,
+    // error-light: #F75142,
+    // error-dark: #C12200,
+    // error-hover-bg:
+    // error-active-bg:
+
+    // warning: #ED8B00,
+    // warning-light: #FFCD00,
+    // warning-dark: #F07402,
+    // warning-hover-bg:
+    // warning-active-bg:
+
+    // success: #009A44,
+    // success-light: #43BD2A,
+    // success-dark: #046A3B,
+    // success-hover-bg:
+    // success-active-bg:
+
+    // text-primary: #161616,
+    // text-secondary: #8F8F8F,
+    // text-disabled: #BCBCBC,
+
+    // action-active: #161616,
+    // action-inactive: #8F8F8F,
+    // action-disabled: #BCBCBC,
+    // action-disabled-bg:
   )
 );
 
@@ -33,6 +57,8 @@ $override-colors: (
   @include mzn-spacing.variables();
   @include mzn-z-index.variables();
   @include mzn-palette.variables("light", $override-colors);
+
+  --mzn-typography-font-family: 'Noto Sans TC', sans-serif;
 }
 
 @include mzn-core.styles();
