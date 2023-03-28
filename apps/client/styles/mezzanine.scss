@@ -1,0 +1,38 @@
+@use '~@mezzanine-ui/core' as mzn-core;
+@use '~@mezzanine-ui/system' as mzn-system;
+@use '~@mezzanine-ui/system/spacing' as mzn-spacing;
+@use '~@mezzanine-ui/system/z-index' as mzn-z-index;
+@use '~@mezzanine-ui/system/palette' as mzn-palette;
+
+$override-colors: (
+  light: (
+    // bg: #fff,
+    // primary: #f9f9f9,
+    // primary-light: #f9f9f9,
+    // on-primary: #858585,
+    // primary-dark: $primary-dark,
+    // primary-hover-bg: $primary-hover-bg,
+    // secondary: $secondary,
+    // secondary-light: $secondary-light,
+    // secondary-dark: $secondary-dark,
+    // success: $success,
+    // success-light: $success-light,
+    // success-dark: $success-dark,
+    // text-primary: $text-primary,
+    // text-secondary: $text-secondary,
+    // text-disabled: #dadada,
+    // action-active: $action-active,
+    // action-inactive: $action-inactive,
+    // action-disabled: $action-disabled,
+    // action-disabled-bg: $action-disabled-bg,
+  )
+);
+
+:root {
+  @include mzn-system.common-variables();
+  @include mzn-spacing.variables();
+  @include mzn-z-index.variables();
+  @include mzn-palette.variables("light", $override-colors);
+}
+
+@include mzn-core.styles();
