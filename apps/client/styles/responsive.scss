@@ -1,0 +1,67 @@
+/* grid: column count */
+$gs-column-count-1681: 12;
+$gs-column-count-1680-1024: 12;
+$gs-column-count-1023-720: 12;
+$gs-column-count-719-0: 4;
+/* grid: max width */
+$gs-content-max-width: 1680px;
+/* grid: column gutter */
+$gs-gutter-1681: 48px;
+$gs-gutter-1680-1024: 48px;
+$gs-gutter-1023-720: 40px;
+$gs-gutter-719-0: 24px;
+/* grid: margin */
+$gs-margin-1681: 40px;
+$gs-margin-1680-1024: 40px;
+$gs-margin-1023-720: 40px;
+$gs-margin-719-0: 24px;
+
+// rwd breakpoints
+$pcMax: 99999;
+$pc1680: 1680;
+$pc1024: 1024;
+$mob720: 720;
+$mob0: 0;
+
+@mixin pc-width {
+  @media all and (min-width: #{$pc-1024}px) {
+    @content;
+  }
+}
+
+@mixin pad-width {
+  @media all and (min-width: #{$mob-720}px) and (max-width: #{$pc1024 - 1}px) {
+    @content;
+  }
+}
+
+@mixin mobile-width {
+  @media all and (max-width: #{$mob720 - 1}px) {
+    @content;
+  }
+}
+
+@mixin mediaQuery($UBoundPlus1, $LBound) {
+  @media all and (max-width: #{$UBoundPlus1 - 1}px) and (min-width: #{$LBound}px) {
+    @content
+  }
+};
+
+/** desktop優先 */
+@mixin mediaQueryUnder($UBoundPlus1) {
+  @media all and (max-width: #{$UBoundPlus1 - 1}px) {
+    @content
+  }
+};
+
+@mixin gs-margin() {
+  margin-left: var(--grid-system-margin);
+  margin-right: var(--grid-system-margin);
+};
+
+@function gs-columns-width($_) {
+  @return calc((var(--grid-system-column-width) * $_) + (($_ - 1) * var(--grid-system-gap)));
+}
+@function gs-column-left($columnIndex) {
+  @return calc((var(--grid-system-column-width) + var(--grid-system-gap)) * $columnIndex);
+}
