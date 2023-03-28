@@ -5,6 +5,17 @@
   font-family: Noto Sans TC, sans-serif;
 }
 
+:root {
+  --sidebar-width: 300px;
+
+  /* grid system */
+  --grid-system-margin: calc((100% - #{$gs-content-max-width}) / 2);
+  --grid-system-gap: #{$gs-gutter-1681};
+  --grid-system-column-count: #{$gs-column-count-1681};
+  --grid-system-width: calc(100% - var(--grid-system-margin) - var(--grid-system-margin));
+  --grid-system-column-width: calc((var(--grid-system-width) - ((var(--grid-system-column-count) - 1) * var(--grid-system-gap))) / var(--grid-system-column-count));
+}
+
 html,
 body {
   height: 100vh;
@@ -19,6 +30,6 @@ body {
   font-size: 16px;
 }
 
-#root {
-  height: 100%;
+#__next {
+  height: 100vh;
 }

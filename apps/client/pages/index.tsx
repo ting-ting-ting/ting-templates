@@ -1,9 +1,7 @@
-import Header from '@core/ui/Header';
-
 function Index() {
   return (
     <div>
-      <Header />
+      content
     </div>
   );
 }

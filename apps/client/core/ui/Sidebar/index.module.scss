@@ -1,0 +1,6 @@
+@use "~@mezzanine-ui/system/palette" as mzn-palette;
+
+.root {
+  width: var(--sidebar-width);
+  background-color: mzn-palette.color(divider);
+}

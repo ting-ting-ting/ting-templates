@@ -1,0 +1,17 @@
+.main {
+  height: 100%;
+
+  .layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    height: 100%;
+
+    .page {
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: relative;
+      scrollbar-width: thin;
+      scroll-behavior: smooth;
+    }
+  }
+}
