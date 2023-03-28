@@ -5,6 +5,10 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@mezzanine-ui/core": "^0.12.4",
+    "@mezzanine-ui/icons": "^0.12.4",
+    "@mezzanine-ui/react": "^0.12.4",
+    "@mezzanine-ui/system": "^0.12.4",
     "@nrwl/next": "15.8.5",
     "next": "13.1.1",
     "react": "18.2.0",
