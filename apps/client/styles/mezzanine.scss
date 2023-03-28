@@ -58,7 +58,98 @@ $override-colors: (
   @include mzn-z-index.variables();
   @include mzn-palette.variables("light", $override-colors);
 
-  --mzn-typography-font-family: 'Noto Sans TC', sans-serif;
+  // font config
+  --mzn-typography-font-family: Noto Sans, Noto Sans TC, sans-serif;
+
+  // // h1
+  // --mzn-typography-h1-font-size: 2rem;
+  --mzn-typography-h1-letter-spacing: 0;
+  // --mzn-typography-h1-line-height: 3rem;
+  // --mzn-typography-h1-font-weight: 600;
+
+  // // h2
+  // --mzn-typography-h2-font-size: 1.5rem;
+  --mzn-typography-h2-letter-spacing: 0;
+  // --mzn-typography-h2-line-height: 2.25rem;
+  // --mzn-typography-h2-font-weight: 600;
+
+  // // h3
+  // --mzn-typography-h3-font-size: 1.375rem;
+  --mzn-typography-h3-letter-spacing: 0;
+  // --mzn-typography-h3-line-height: 2rem;
+  // --mzn-typography-h3-font-weight: 500;
+
+  // // h4
+  // --mzn-typography-h4-font-size: 1.125rem;
+  --mzn-typography-h4-letter-spacing: 0;
+  // --mzn-typography-h4-line-height: 1.75rem;
+  // --mzn-typography-h4-font-weight: 500;
+
+  // // h5
+  // --mzn-typography-h5-font-size: 0.9375rem;
+  --mzn-typography-h5-letter-spacing: 0;
+  // --mzn-typography-h5-line-height: 1.5rem;
+  // --mzn-typography-h5-font-weight: 500;
+
+  // h6
+  // --mzn-typography-h6-font-size: 0.8125rem;
+  --mzn-typography-h6-letter-spacing: 0;
+  // --mzn-typography-h6-line-height: 1.25rem;
+  // --mzn-typography-h6-font-weight: 500;
+
+  // // button1
+  // --mzn-typography-button1-font-size: 0.9375rem;
+  --mzn-typography-button1-letter-spacing: 0;
+  // --mzn-typography-button1-line-height: 2.5rem;
+  // --mzn-typography-button1-font-weight: 500;
+
+  // // button2
+  // --mzn-typography-button2-font-size: 0.9375rem;
+  --mzn-typography-button2-letter-spacing: 0;
+  // --mzn-typography-button2-line-height: 2rem;
+  // --mzn-typography-button2-font-weight: 500;
+
+  // button3
+  // --mzn-typography-button3-font-size: 0.8125rem;
+  --mzn-typography-button3-letter-spacing: 0;
+  // --mzn-typography-button3-line-height: 1.5rem;
+  // --mzn-typography-button3-font-weight: 500;
+
+  // input1
+  // --mzn-typography-input1-font-size: 0.9375rem;
+  --mzn-typography-input1-letter-spacing: 0;
+  // --mzn-typography-input1-line-height: 2.5rem;
+  // --mzn-typography-input1-font-weight: 400;
+
+  // input2 - body 500
+  // --mzn-typography-input2-font-size: 0.9375rem;
+  --mzn-typography-input2-letter-spacing: 0;
+  // --mzn-typography-input2-line-height: 2rem;
+  // --mzn-typography-input2-font-weight: 400;
+
+  // // input3
+  // --mzn-typography-input3-font-size: 0.8125rem;
+  --mzn-typography-input3-letter-spacing: 0;
+  // --mzn-typography-input3-line-height: 1.5rem;
+  // --mzn-typography-input3-font-weight: 400;
+
+  // body1
+  // --mzn-typography-body1-font-size: 0.9375rem;
+  --mzn-typography-body1-letter-spacing: 0;
+  // --mzn-typography-body1-line-height: 1.5rem;
+  // --mzn-typography-body1-font-weight: 400;
+
+  // body2
+  // --mzn-typography-body2-font-size: 0.8125rem;
+  --mzn-typography-body2-letter-spacing: 0;
+  // --mzn-typography-body2-line-height: 1.25rem;
+  // --mzn-typography-body2-font-weight: 400;
+
+  // caption
+  // --mzn-typography-caption-font-size: 0.75rem;
+  --mzn-typography-caption-letter-spacing: 0;
+  // --mzn-typography-caption-line-height: 1rem;
+  // --mzn-typography-caption-font-weight: 400;
 }
 
 @include mzn-core.styles();
