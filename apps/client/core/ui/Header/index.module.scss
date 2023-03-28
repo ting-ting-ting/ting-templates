@@ -1,0 +1,9 @@
+@use "~@mezzanine-ui/system/palette" as mzn-palette;
+
+.main {
+  justify-content: flex-end;
+}
+
+.icon {
+  color: mzn-palette.color(text-secondary);
+}

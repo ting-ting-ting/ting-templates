@@ -5,9 +5,13 @@ import {
   AppBarSupport,
   Navigation,
   NavigationItem,
+  Input,
+  Icon,
 } from '@mezzanine-ui/react';
+import { SearchIcon } from '@mezzanine-ui/icons';
 import Image from 'next/image';
 import logo from '@public/images/mezzanine.svg';
+import classes from './index.module.scss';
 
 const Header: FC = () => {
   return (
@@ -15,7 +19,7 @@ const Header: FC = () => {
       <AppBarBrand>
         <Image src={logo} alt="" />
       </AppBarBrand>
-      <AppBarMain>
+      <AppBarMain className={classes.main}>
         <Navigation>
           <NavigationItem
             key="Foundation"
@@ -36,7 +40,11 @@ const Header: FC = () => {
         </Navigation>
       </AppBarMain>
       <AppBarSupport>
-        Search
+        <Input
+          placeholder="Search..."
+          prefix={<Icon icon={SearchIcon} className={classes.icon} />}
+          clearable
+        />
       </AppBarSupport>
     </AppBar>
   );
