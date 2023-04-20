@@ -1044,6 +1044,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@cl-live-server/logger@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@cl-live-server/logger/-/logger-0.0.3.tgz#09a8d652327e94e32ba2817d71214ba86778c44e"
+  integrity sha512-ZCC7CmlLtWtMnwiWahXuiRF71lhuS5zezMskXGV+PnwQ/K18ai6APcfitFQLstWlTKKI7m1ZSaQt4nShnpwJhQ==
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
@@ -5204,6 +5209,14 @@ functions-have-names@^1.2.2:
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
+generate-next-links@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/generate-next-links/-/generate-next-links-3.1.0.tgz#7b7b3b6dc391645410013da86dbc19fb7d995c5f"
+  integrity sha512-lfbPV0m913UJjAYkO0f+4gANIentfluJ0MpMXwBmibz2MhxXrT6CF3Mf7pPpi8MS3/TfZVRYKSCBA7ziHrVIXw==
+  dependencies:
+    "@cl-live-server/logger" "^0.0.3"
+    prettier "^2.3.2"
+
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
@@ -8016,7 +8029,7 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w==
 
-prettier@^2.6.2:
+prettier@^2.3.2, prettier@^2.6.2:
   version "2.8.7"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.7.tgz#bb79fc8729308549d28fe3a98fce73d2c0656450"
   integrity sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==

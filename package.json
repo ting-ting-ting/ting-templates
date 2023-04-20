@@ -2,7 +2,9 @@
   "name": "ting-templates",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "pages": "npx generate-next-links -P apps/client/ -O apps/client/core/utils/ -N GenerateNextPath"
+  },
   "private": true,
   "dependencies": {
     "@mezzanine-ui/core": "^0.12.4",
@@ -42,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
+    "generate-next-links": "^3.1.0",
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
     "nx": "15.8.5",
