@@ -1,9 +1,9 @@
+import '../styles/global.scss';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import Header from '@core/ui/Header';
 import Sidebar from '@core/ui/Sidebar';
 import classes from './app.module.scss';
-import '../styles/global.scss';
 
 function App({ Component, pageProps }: AppProps) {
   return (

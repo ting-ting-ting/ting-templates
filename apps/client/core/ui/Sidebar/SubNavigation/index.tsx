@@ -27,8 +27,8 @@ const SubNavigation: FC = () => {
       </div>
       {opened && (
         <div className={classes.subNavigation}>
-          <NavigationItem label="Item1" />
-          <NavigationItem label="Item2" />
+          <NavigationItem label="Item1" pathname="/" />
+          <NavigationItem label="Item2" pathname="/" />
         </div>
       )}
     </GapLayout>

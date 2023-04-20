@@ -12,3 +12,8 @@ export { GenerateNextPath as NextPath } from './generateNextPath';
 
 export const dynamicPath = nextJsDynamicPath<NextPath>;
 export const getPathParamName = getNextJsDynamicPathParamName<NextPath>;
+
+export const routes = [{
+  label: '行事曆',
+  pathname: NextPath.CALENDAR,
+}];
