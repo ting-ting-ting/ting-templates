@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {
   Typography,
-  Button,
   Icon,
 } from '@mezzanine-ui/react';
 import {
@@ -9,6 +8,7 @@ import {
   ChevronDownIcon,
 } from '@mezzanine-ui/icons';
 import GapLayout from '@core/layout/GapLayout';
+import NavigationItem from '../NavigationItem';
 import classes from './index.module.scss';
 
 const SubNavigation: FC = () => {
@@ -27,12 +27,8 @@ const SubNavigation: FC = () => {
       </div>
       {opened && (
         <div className={classes.subNavigation}>
-          <Button type="button" size="large" className={classes.subNavigationItem}>
-            <Typography variant="h5" color="text-primary">Breadcrumb</Typography>
-          </Button>
-          <Button type="button" size="large" className={classes.subNavigationItem}>
-            <Typography variant="h5" color="text-primary">Dropdown</Typography>
-          </Button>
+          <NavigationItem label="Item1" />
+          <NavigationItem label="Item2" />
         </div>
       )}
     </GapLayout>
