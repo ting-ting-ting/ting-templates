@@ -1,11 +1,12 @@
-import { Typography } from '@mezzanine-ui/react';
+import Calendar from '@core/ui/Calendar';
+import { mockData } from '@core/ui/Calendar/mock';
 
-function Calendar() {
+function CalendarPage() {
   return (
     <div>
-      <Typography variant="h1">Calendar</Typography>
+      <Calendar dataSource={mockData} />
     </div>
   );
 }
 
-export default Calendar;
+export default CalendarPage;

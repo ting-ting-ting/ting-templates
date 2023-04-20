@@ -1,0 +1,138 @@
+@use '~@mezzanine-ui/system/palette' as mzn-palette;
+
+$body-height: 104px;
+$min-cell-width: 120px;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 700px;
+
+  .table {
+    min-width: 100%;
+
+    .leftWidth {
+      width: $min-cell-width;
+      min-width: $min-cell-width;
+    }
+
+    .bodyHeight {
+      height: $body-height;
+    }
+
+    .tableRow {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .cell {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      border: 1px solid mzn-palette.color(divider);
+      background-color: mzn-palette.color(surface);
+      align-self: stretch;
+    }
+
+    .classesCell {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 3;
+
+      &.personalCell {
+        overflow-y: hidden;
+        top: calc((var(--from-minutes) * $body-height / 60) - 1px);
+        bottom: unset;
+        height: calc(var(--diff-minutes) * $body-height / 60);
+      }
+    }
+
+    .leftCell {
+      position: sticky;
+      left: 0;
+      padding: 4px;
+      z-index: 4;
+    }
+
+    .crossCell {
+      position: sticky;
+      left: 0;
+      top: 0;
+      z-index: 5;
+    }
+
+    .valueCell {
+      flex: 1;
+      min-width: $min-cell-width;
+    }
+
+    .tableHeader {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+
+      .headerText {
+        color: mzn-palette.color(bg);
+        transition: color 250ms cubic-bezier(0, 0, 0.3, 1);
+
+        &.activeTarget {
+          color: #fff;
+        }
+      }
+
+      .headerCell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: mzn-palette.color(secondary-dark);
+        padding: 16px 0;
+        transition: background-color 250ms cubic-bezier(0, 0, 0.3, 1);
+
+        &.activeTarget {
+          background-color: mzn-palette.color(primary-dark);
+        }
+      }
+    }
+
+    .tableBody {
+      display: block;
+    }
+
+    .tableFooter {
+      position: sticky;
+      bottom: 0;
+      z-index: 5;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        height: 1px;
+        width: 100%;
+        background-color: mzn-palette.color(secondary-dark);
+        z-index: 5;
+      }
+
+      .footerCell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: mzn-palette.color(border);
+        padding: 16px 0;
+      }
+    }
+  }
+}

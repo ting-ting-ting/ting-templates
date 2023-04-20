@@ -1,0 +1,38 @@
+@use '~@mezzanine-ui/system/palette' as mzn-palette;
+
+.root {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: mzn-palette.color(surface);
+  padding-top: 4px;
+  padding-bottom: 2px;
+  border: 1px solid mzn-palette.color(divider);
+  gap: 4px;
+
+  &.deducted {
+    background-color: #075a7d;
+  }
+
+  .name {
+    width: 100%;
+    display: block;
+    color: #44bcf0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  .student {
+    color: #44bcf0;
+
+    &.deducted {
+      color: mzn-palette.color(secondary);
+    }
+  }
+}
