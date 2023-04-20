@@ -1,0 +1,15 @@
+.root {
+  .head {
+    padding-top: 40px;
+    padding-left: var(--page-layout-padding-left);
+    padding-bottom: 12px;
+
+    .block {
+      width: var(--content-width);
+
+      .description {
+        margin-top: 20px;
+      }
+    }
+  }
+}

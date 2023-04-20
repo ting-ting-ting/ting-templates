@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: var(--page-layout-padding-left);
+  padding-right: 40px;
+  padding-bottom: 60px;
+  gap: 80px;
+
+  .content {
+    width: var(--content-width);
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+}
