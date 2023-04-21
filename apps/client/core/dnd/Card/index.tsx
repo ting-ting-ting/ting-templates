@@ -31,51 +31,50 @@ const Card: FC<CardProps> = ({
       canDrop: monitor.canDrop(),
     }),
     hover: (item, monitor) => {
-      console.log('item', item)
       const dragIndex = item.index;
-        const hoverIndex = index;
+      const hoverIndex = index;
 
-        if (dragIndex === hoverIndex || !ref.current) {
-          return;
-        }
-        const hoverBoundingRect = ref.current.getBoundingClientRect();
-        const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-        const clientOffset = monitor.getClientOffset();
+      if (dragIndex === hoverIndex || !ref.current) {
+        return;
+      }
+      const hoverBoundingRect = ref.current.getBoundingClientRect();
+      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+      const clientOffset = monitor.getClientOffset();
 
-        if (!clientOffset) return;
+      if (!clientOffset) return;
 
-        const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
 
-        if (dragIndex + 1 < hoverIndex && hoverClientY < hoverMiddleY) {
+      if (dragIndex + 1 < hoverIndex && hoverClientY < hoverMiddleY) {
 
-          changeByIndex(dragIndex, hoverIndex - 1);
-          item.index = hoverIndex - 1;
-          return;
-        }
+        changeByIndex(dragIndex, hoverIndex - 1);
+        item.index = hoverIndex - 1;
+        return;
+      }
 
-        if (dragIndex > hoverIndex + 1 && hoverClientY > hoverMiddleY) {
+      if (dragIndex > hoverIndex + 1 && hoverClientY > hoverMiddleY) {
 
-          changeByIndex(dragIndex, hoverIndex + 1);
-          item.index = hoverIndex + 1;
-          return;
-        }
+        changeByIndex(dragIndex, hoverIndex + 1);
+        item.index = hoverIndex + 1;
+        return;
+      }
 
-        if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-          return;
-        }
+      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+        return;
+      }
 
-        if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-          return;
-        }
+      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+        return;
+      }
 
 
-        changeByIndex(dragIndex, hoverIndex);
+      changeByIndex(dragIndex, hoverIndex);
 
-        // Note: we're mutating the monitor item here!
-        // Generally it's better to avoid mutations,
-        // but it's good here for the sake of performance
-        // to avoid expensive index searches.
-        item.index = hoverIndex;
+      // Note: we're mutating the monitor item here!
+      // Generally it's better to avoid mutations,
+      // but it's good here for the sake of performance
+      // to avoid expensive index searches.
+      item.index = hoverIndex;
     },
     // drop: (item, monitor) => {
     //   const dragIndex = (item as { index: number }).index;
