@@ -1,7 +1,12 @@
+import Card from '@core/dnd/Card';
+import DropArea from '@core/dnd/DropArea';
+
 function CardsPage() {
   return (
     <div>
-      Cards
+      <DropArea />
+      <Card />
+      <Card />
     </div>
   );
 }
