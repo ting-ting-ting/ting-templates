@@ -11,11 +11,13 @@ enum HoverType {
 interface CardProps {
   name: string;
   index: number;
+  changeByIndex: (from: number, to: number) => void;
 }
 
 const Card: FC<CardProps> = ({
   name,
   index,
+  changeByIndex,
 }) => {
   const [hoverType, setHoverType] = useState<HoverType | null>(null);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -45,7 +47,27 @@ const Card: FC<CardProps> = ({
         }
        }
       }
-    }
+    },
+    drop: (item, monitor) => {
+      const dragIndex = (item as { index: number }).index;
+      const hoverIndex = index;
+
+      if (dragIndex !== hoverIndex && ref.current) {
+        const hoverBoundingRect = ref.current.getBoundingClientRect();
+        const hoverMiddleX = (hoverBoundingRect.right - hoverBoundingRect.left) / 2;
+        const clientOffset = monitor.getClientOffset();
+
+       if (clientOffset) {
+        const hoverClientX = clientOffset.x - hoverBoundingRect.left;
+
+        if (hoverClientX < hoverMiddleX) {
+          changeByIndex(dragIndex, index)
+        } else {
+          changeByIndex(dragIndex, index + 1)
+        }
+       }
+      }
+    },
   }));
 
   useEffect(() => {
