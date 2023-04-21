@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, memo } from 'react';
 import { useDrag, useDrop, DragPreviewImage } from 'react-dnd';
 import { cx } from '@mezzanine-ui/react';
-import logo from '@public/images/mezzanine.svg';
+import drag_preview from '@public/images/drag_preview.png';
 import { onHoverOrDrop } from '../utils/action';
 import { CardType } from '../constants';
 import classes from './index.module.scss';
@@ -31,6 +31,7 @@ const Card: FC<CardProps> = ({
       canDrop: monitor.canDrop(),
     }),
     hover: (item, monitor) => {
+      console.log('item', item)
       const dragIndex = item.index;
         const hoverIndex = index;
 
@@ -95,11 +96,11 @@ const Card: FC<CardProps> = ({
     // },
   }));
 
-  useEffect(() => {
-    if (!isOver) {
-      setHoverType(null);
-    }
-  }, [isOver])
+  // useEffect(() => {
+  //   if (!isOver) {
+  //     setHoverType(null);
+  //   }
+  // }, [isOver])
 
   drop(ref);
 
@@ -110,7 +111,7 @@ const Card: FC<CardProps> = ({
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
-    })
+    }),
   }));
 
   return (
@@ -129,7 +130,6 @@ const Card: FC<CardProps> = ({
       >
         {name}
       </div>
-      <DragPreviewImage src={logo} connect={preview} />
     </div>
   )
 }
