@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, memo } from 'react';
-import { useDrag, useDrop } from 'react-dnd';
+import { useDrag, useDrop, DragPreviewImage } from 'react-dnd';
 import { cx } from '@mezzanine-ui/react';
+import logo from '@public/images/mezzanine.svg';
 import { onHoverOrDrop } from '../utils/action';
 import { CardType } from '../constants';
 import classes from './index.module.scss';
@@ -30,39 +31,68 @@ const Card: FC<CardProps> = ({
       canDrop: monitor.canDrop(),
     }),
     hover: (item, monitor) => {
-      const dragIndex = (item as { index: number }).index;
-      const hoverIndex = index;
+      const dragIndex = item.index;
+        const hoverIndex = index;
 
-      onHoverOrDrop({
-        monitor,
-        dragIndex,
-        hoverIndex,
-        targetCurrent: ref.current,
-        onLeft: () => {
-          setHoverType(HoverType.Left);
-        },
-        onRight: () => {
-          setHoverType(HoverType.Right);
-        },
-      });
-    },
-    drop: (item, monitor) => {
-      const dragIndex = (item as { index: number }).index;
-      const hoverIndex = index;
+        if (dragIndex === hoverIndex || !ref.current) {
+          return;
+        }
+        const hoverBoundingRect = ref.current.getBoundingClientRect();
+        const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+        const clientOffset = monitor.getClientOffset();
 
-      onHoverOrDrop({
-        monitor,
-        dragIndex,
-        hoverIndex,
-        targetCurrent: ref.current,
-        onLeft: () => {
-          changeByIndex(dragIndex, index);
-        },
-        onRight: () => {
-          changeByIndex(dragIndex, index + 1);
-        },
-      });
+        if (!clientOffset) return;
+
+        const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+
+        if (dragIndex + 1 < hoverIndex && hoverClientY < hoverMiddleY) {
+
+          changeByIndex(dragIndex, hoverIndex - 1);
+          item.index = hoverIndex - 1;
+          return;
+        }
+
+        if (dragIndex > hoverIndex + 1 && hoverClientY > hoverMiddleY) {
+
+          changeByIndex(dragIndex, hoverIndex + 1);
+          item.index = hoverIndex + 1;
+          return;
+        }
+
+        if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+          return;
+        }
+
+        if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+          return;
+        }
+
+
+        changeByIndex(dragIndex, hoverIndex);
+
+        // Note: we're mutating the monitor item here!
+        // Generally it's better to avoid mutations,
+        // but it's good here for the sake of performance
+        // to avoid expensive index searches.
+        item.index = hoverIndex;
     },
+    // drop: (item, monitor) => {
+    //   const dragIndex = (item as { index: number }).index;
+    //   const hoverIndex = index;
+
+    //   onHoverOrDrop({
+    //     monitor,
+    //     dragIndex,
+    //     hoverIndex,
+    //     targetCurrent: ref.current,
+    //     onLeft: () => {
+    //       changeByIndex(dragIndex, index);
+    //     },
+    //     onRight: () => {
+    //       changeByIndex(dragIndex, index + 1);
+    //     },
+    //   });
+    // },
   }));
 
   useEffect(() => {
@@ -73,7 +103,7 @@ const Card: FC<CardProps> = ({
 
   drop(ref);
 
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [{ isDragging }, drag, preview] = useDrag(() => ({
     type: CardType,
     item: {
       index,
@@ -99,6 +129,7 @@ const Card: FC<CardProps> = ({
       >
         {name}
       </div>
+      <DragPreviewImage src={logo} connect={preview} />
     </div>
   )
 }

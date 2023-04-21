@@ -8,35 +8,26 @@ function CardsPage() {
 
   const changeByIndex = useCallback((from: number, to: number) => {
     setArray((preArray) => {
-      const fromElement = preArray[from];
-      const middleArray = [
-        ...preArray.slice(0, to),
-        fromElement,
-        ...preArray.slice(to),
-      ];
-
-      if (to > from) {
-        const targetArray = [
-          ...middleArray.slice(0, from),
-          ...middleArray.slice(from + 1),
-        ];
-
-        return targetArray;
+      if (to < 0 || to > preArray.length - 1) {
+        return preArray;
       }
 
-      const targetArray = [
-        ...middleArray.slice(0, from + 1),
-        ...middleArray.slice(from + 2),
-      ];
+      console.log('first', from, to)
 
-      return targetArray;
+      const newArray = Array.from(preArray);
+      const [removed] = newArray.splice(from, 1);
+      newArray.splice(to, 0, removed);
+
+      return newArray;
     })
   }, []);
 
+  console.log('array', array)
+
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '80px 80px 80px 80px', gap: '9px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
       {array.map((data, index) => (
-        <Card key={index} name={data} index={index} changeByIndex={changeByIndex} />
+        <Card key={`${data}-${index}`} name={data} index={index} changeByIndex={changeByIndex} />
       ))}
     </div>
   );
