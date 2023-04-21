@@ -4,7 +4,7 @@ const mockData = ['丁1號', '丁2號', '丁3號', '丁4號', '丁5號', '丁6�
 
 function CardsPage() {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '80px 80px 80px 80px', gap: '10px' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '80px 80px 80px 80px', gap: '9px' }}>
       {mockData.map((data, index) => (
         <Card key={data} name={data} index={index} />
       ))}

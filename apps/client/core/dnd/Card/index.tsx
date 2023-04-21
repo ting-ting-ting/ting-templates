@@ -1,9 +1,13 @@
-import { useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { cx } from '@mezzanine-ui/react';
 import { CardType } from '../constants';
 import classes from './index.module.scss';
 
+enum HoverType {
+  Left = 'Left',
+  Right = 'Right',
+}
 interface CardProps {
   name: string;
   index: number;
@@ -13,6 +17,7 @@ const Card: FC<CardProps> = ({
   name,
   index,
 }) => {
+  const [hoverType, setHoverType] = useState<HoverType | null>(null);
   const ref = useRef<HTMLDivElement | null>(null);
 
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
@@ -34,14 +39,20 @@ const Card: FC<CardProps> = ({
         const hoverClientX = clientOffset.x - hoverBoundingRect.left;
 
         if (hoverClientX < hoverMiddleX) {
-          console.log('target', index)
+          setHoverType(HoverType.Left)
         } else {
-          console.log('target', index + 1)
+          setHoverType(HoverType.Right)
         }
        }
       }
     }
   }));
+
+  useEffect(() => {
+    if (!isOver) {
+      setHoverType(null);
+    }
+  }, [isOver])
 
   drop(ref);
 
@@ -56,7 +67,13 @@ const Card: FC<CardProps> = ({
   }));
 
   return (
-    <div ref={ref}>
+    <div
+      ref={ref}
+      className={cx(classes.drop, {
+        [classes.hoverLeft]: hoverType === HoverType.Left,
+        [classes.hoverRight]: hoverType === HoverType.Right,
+      })}
+    >
       <div
         ref={drag}
         className={cx(classes.root, {
