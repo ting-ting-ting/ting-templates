@@ -1,7 +1,17 @@
 import { useDrag } from 'react-dnd';
+import { cx } from '@mezzanine-ui/react';
 import { CardType } from '../constants';
+import classes from './index.module.scss';
 
-const Card = () => {
+interface CardProps {
+  name: string;
+  index: number;
+}
+
+const Card: FC<CardProps> = ({
+  name,
+  index,
+}) => {
   const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
     type: CardType,
     collect: (monitor) => ({
@@ -10,10 +20,15 @@ const Card = () => {
   }));
 
   return (
-    <div ref={dragPreview} style={{ opacity: isDragging ? 0.5 : 1}}>
-      <div ref={drag}>Card</div>
+    <div
+      ref={drag}
+      className={cx(classes.root, {
+        [classes.isDragging]: isDragging,
+      })}
+    >
+      {name}
     </div>
-  );
+  )
 }
 
 export default Card;

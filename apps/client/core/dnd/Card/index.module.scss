@@ -1,0 +1,20 @@
+.preview {
+
+  background-color: red;
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aquamarine;
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  cursor: grab;
+
+  &.isDragging {
+    opacity: 0.5;
+    cursor: grabbing;
+  }
+}
