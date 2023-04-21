@@ -16,4 +16,7 @@ export const getPathParamName = getNextJsDynamicPathParamName<NextPath>;
 export const routes = [{
   label: '行事曆',
   pathname: NextPath.CALENDAR,
+}, {
+  label: '卡片',
+  pathname: NextPath.CARDS,
 }];
