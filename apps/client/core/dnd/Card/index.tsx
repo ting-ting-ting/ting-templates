@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, memo } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { cx } from '@mezzanine-ui/react';
+import { onHoverOrDrop } from '../utils/action';
 import { CardType } from '../constants';
 import classes from './index.module.scss';
 
@@ -32,41 +33,35 @@ const Card: FC<CardProps> = ({
       const dragIndex = (item as { index: number }).index;
       const hoverIndex = index;
 
-      if (dragIndex !== hoverIndex && ref.current) {
-        const hoverBoundingRect = ref.current.getBoundingClientRect();
-        const hoverMiddleX = (hoverBoundingRect.right - hoverBoundingRect.left) / 2;
-        const clientOffset = monitor.getClientOffset();
-
-       if (clientOffset) {
-        const hoverClientX = clientOffset.x - hoverBoundingRect.left;
-
-        if (hoverClientX < hoverMiddleX) {
-          setHoverType(HoverType.Left)
-        } else {
-          setHoverType(HoverType.Right)
-        }
-       }
-      }
+      onHoverOrDrop({
+        monitor,
+        dragIndex,
+        hoverIndex,
+        targetCurrent: ref.current,
+        onLeft: () => {
+          setHoverType(HoverType.Left);
+        },
+        onRight: () => {
+          setHoverType(HoverType.Right);
+        },
+      });
     },
     drop: (item, monitor) => {
       const dragIndex = (item as { index: number }).index;
       const hoverIndex = index;
 
-      if (dragIndex !== hoverIndex && ref.current) {
-        const hoverBoundingRect = ref.current.getBoundingClientRect();
-        const hoverMiddleX = (hoverBoundingRect.right - hoverBoundingRect.left) / 2;
-        const clientOffset = monitor.getClientOffset();
-
-       if (clientOffset) {
-        const hoverClientX = clientOffset.x - hoverBoundingRect.left;
-
-        if (hoverClientX < hoverMiddleX) {
-          changeByIndex(dragIndex, index)
-        } else {
-          changeByIndex(dragIndex, index + 1)
-        }
-       }
-      }
+      onHoverOrDrop({
+        monitor,
+        dragIndex,
+        hoverIndex,
+        targetCurrent: ref.current,
+        onLeft: () => {
+          changeByIndex(dragIndex, index);
+        },
+        onRight: () => {
+          changeByIndex(dragIndex, index + 1);
+        },
+      });
     },
   }));
 
