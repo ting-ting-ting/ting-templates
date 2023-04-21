@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { cx } from '@mezzanine-ui/react';
 import { CardType } from '../constants';
@@ -22,11 +22,11 @@ const Card: FC<CardProps> = ({
   const [hoverType, setHoverType] = useState<HoverType | null>(null);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const [{ canDrop, isOver }, drop] = useDrop(() => ({
+  const [{ isOver }, drop] = useDrop(() => ({
     accept: CardType,
     collect: (monitor) => ({
       isOver: monitor.isOver(),
-      canDrop: monitor.canDrop()
+      canDrop: monitor.canDrop(),
     }),
     hover: (item, monitor) => {
       const dragIndex = (item as { index: number }).index;
@@ -78,7 +78,7 @@ const Card: FC<CardProps> = ({
 
   drop(ref);
 
-  const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
+  const [{ isDragging }, drag] = useDrag(() => ({
     type: CardType,
     item: {
       index,
@@ -108,4 +108,4 @@ const Card: FC<CardProps> = ({
   )
 }
 
-export default Card;
+export default memo(Card);
