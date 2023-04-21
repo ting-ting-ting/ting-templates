@@ -1,0 +1,43 @@
+.drop {
+  position: relative;
+
+  &.hoverLeft {
+    &::before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 80px;
+      background-color: red;
+      top: 0;
+      left: -5px;
+    }
+  }
+
+  &.hoverRight {
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 80px;
+      background-color: red;
+      top: 0;
+      right: -5px;
+    }
+  }
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aquamarine;
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  cursor: grab;
+
+  &.isDragging {
+    opacity: 0.5;
+    cursor: grabbing;
+  }
+}
